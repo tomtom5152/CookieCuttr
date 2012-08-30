@@ -21,7 +21,7 @@ $db = $gCms->getDb();
         
 if(!empty($params['submit'])) {
     $v;
-    if(!empty($params['v'])) $v = mysql_real_escape_string($params['v']);
+    if(!empty($params['v'])) $v = htmlspecialchars($params['v'], ENT_QUOTES);;
     $sql = "UPDATE ".cms_db_prefix()."module_cookiecuttr 
         SET `v`='$v' WHERE `k`='opt'";
     $db->Execute($sql);
